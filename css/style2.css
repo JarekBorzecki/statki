@@ -1,0 +1,258 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	background: url(https://images.pexels.com/photos/486895/pexels-photo-486895.jpeg?h=350&auto=compress&cs=tinysrgb) top/cover no-repeat;
+	height: 80vh;
+	background-attachment: fixed;
+}
+
+.margin-top {
+	margin-top: 50px;
+}
+
+#start-info {
+	font-size: 30px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.jumbotron {
+	/*margin-top: 100px;*/
+	background-color: transparent !important;
+} 
+
+#welcome {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	/*margin-top: 30px;*/
+}
+
+#myCarousel {
+	height: 350px;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.item {
+	display: flex;
+	justify-content: center;
+	padding-right: 200px;
+	padding-left: 200px;
+}
+
+.item p, .item li {
+	font-size: 17px;
+}
+
+.ships-location {
+	background: url("../img/ulozenie.jpg") center/cover no-repeat;
+	display: inline-block;
+	height: 150px;
+	width: 150px;
+	margin-right: 50px;
+}
+
+.surround {
+	background: url("../img/surround.jpg") center/cover no-repeat;
+	display: inline-block;
+	height: 150px;
+	width: 150px;
+}
+
+.hideSection {
+	display: none;
+}
+
+.showSection {
+	display: block;
+}
+
+#gameplay {
+	position: relative;
+	height: 90vh;
+	margin-top: 30px;
+}
+
+#messageArea {
+	font-family: 'Old Standard TT', serif;
+	font-size: 40px;
+	font-weight: 700;
+	color: #0D3240;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 480px;
+}
+
+#computersName {
+	font-family: 'Old Standard TT', serif;
+	letter-spacing: 3px;
+	font-weight: bold;
+	color: #0D3240;
+	font-size: 20px;
+	height: 50px;
+	line-height: 30px;
+	margin-bottom: 20px;
+}
+
+#computersArea {
+	text-align: center;
+}
+
+table th {
+	text-align: center;
+}
+
+#computersArea button {
+	width: 45px;
+	height: 45px;
+	margin: -0.5px;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+img {
+	display: none;
+}
+
+.strike {
+	background: url('../img/ship3.png') no-repeat center center;
+	cursor: not-allowed;
+}
+
+.miss {
+	background: url('../img/miss.png') no-repeat center center;
+	cursor: not-allowed;
+}
+
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 15px 30px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s; 
+}
+
+.btn:hover i {
+	color: #DD0000;
+}
+
+.btn-start {
+  background: #32C6FE;
+  color: #DD0000;
+  box-shadow: 0 6px #2695BF;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border-radius: 0 0 5px 5px;
+  height: 47px;
+  width: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-start:after {
+  background: #fff;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .2;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: -10;
+}
+
+.btn-start:hover {
+	box-shadow: 0 4px #2695BF;
+ 	top: 2px;
+}
+
+.btn-start:hover:after {
+  left: 120%;
+  z-index: 100;
+}
+
+.btn-start:active {
+  box-shadow: 0 0 #2695BF;
+  top: 6px;
+}
+
+.slow-spin {
+  -webkit-animation: fa-spin 5s infinite linear;
+  animation: fa-spin 5s infinite linear;
+}
+
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+button p {
+	display: inline;
+	color: #FFF;
+	padding-left: 10px;
+}
+
+.next-game {
+	background-color: #586770;
+	color: #FFFFFF;
+	width: 230px;
+	height: 57px;
+	margin-top: 30px;
+	border: none;
+	font-size: 30px;
+	border-radius: 20px;
+	letter-spacing: 1px;
+	transition: .5s;
+}
+
+.next-game:hover {
+	background-color: #FFFFFF;
+	color: #586770;
+}
+
+.result {
+	width: 100%;
+}
+
+@media (max-width: 850px) {
+	#computersArea {
+		/*width: 500px;*/
+		display: flex;
+		justify-content: center;
+		margin-top: 50px;
+	}
+}
+
+@media (max-width: 767px) {
+
+	#computersName {
+		position: absolute;
+		top: 400px;
+		left: -220px;
+		color: #FFFFFF;
+		font-size: 30px;
+		display: block;
+		padding: 10px;
+	}
+}
