@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Praktyka</title>
+		<link rel="stylesheet" type="text/css" href="css/style2.css">
+		<link href='https://fonts.googleapis.com/css?family=Old+Standard+TT:400italic,700&subset=latin-ext' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="
+		sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<header id="welcome" class="jumbotron">
+			<!-- <h1>Statki</h1> -->
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+				
+
+			  	<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+			    <div class="item active">
+			      	<div>
+			        	<h1>Witaj!</h1>
+			        	<h2 class="margin-top">Chciałbym Cię zaprosić do zagrania w grę "Statki".</h2>
+			        	<h2 class="margin-top">Proszę Cię, abyś poświęcił chwilę na zaznajomienie się z zasadami gry.</h2>
+			      	</div>
+			    </div>
+
+			    <div class="item">
+			      	<div>
+			        	<h2><strong>Zasady cz. I</strong></h2>
+			        	<p class="margin-top">Zadaniem gracza jest zatopienie wszystkich statków komputera, poprzez kliknięcie lewym przyciskiem myszy na wybrane pole. Na całość składa się: 
+			        	<ul>
+			        		<li>Jeden statek czteromasztowy,</li>
+			        		<li>Dwa statki trzymasztowe,</li>
+			        		<li>Trzy statki dwumasztowe,</li>
+			        		<li>Cztery statki jednomasztowe</li>
+			        	</ul>
+			        	<p>Daje to łącznie 10 statków (20 masztów).</p>
+			      	</div>
+			    </div>
+
+			    <div class="item">
+				    <div class="row">
+				      	<h2><strong>Zasady cz. II</strong></h2>
+				      	<p class="margin-top">Poszczególne statki nie stykają się ze sobą krawędziami, ani narożnikami. Pomiędzy nimi musi istnieć pole przerwy.</p>
+				      	<div class="ships-location margin-top"></div>
+				      	<div class="surround margin-top"></div>
+				    </div>
+			    </div>
+
+			    <div class="item">
+			      <div>
+			        <h2><strong>Zasady cz. III</strong></h2>
+			        <p class="margin-top">W przypadku trafienia statku, pojawia się na planszy symbol statku oraz stosowny komunikat po lewej stronie:</p>
+				    <ul>
+						<li>Trafiony! - oznacza, że trafiłeś na jeden z masztów statku, ale okręt nie został jeszcze zatopiony. Należy zestrzelić pozostałe maszty,</li>
+						<li>Zatopiłeś okręt! - oznacza, że trafiłeś we wszystkie maszty danego statku, a tym samym zatopiłeś jeden okręt</li>
+					</ul>
+					<p>W przypadku pudła, na klikniętym polu pojawia się znak "X" oraz komunikat "Spudłowałeś!</p>
+					<h3>Życzę udanej zabawy i powodzenia!</h3>
+			      </div>
+			    </div>
+			  </div>
+			  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+			<p id="start-info" class="margin-top">Naciśnij 'START', aby zacząć</p>
+			<button type="button" id="start" class="btn btn-start"><i class="fa fa-life-ring slow-spin fa-2x fa-fw"></i><p>START</p></button>
+		</header>
+		<main id='gameplay' class="container hideSection">
+			<div class="row">
+				<section class="col-xs-5 col-xs-offset-6">
+					<h3 id="computersName"></h3>
+				</section>
+			</div>
+			<div class="row">
+				<section id="messageArea" class="col-sm-5 col-md-6">
+					<div class="row">
+						<p id="result"></p>
+						<p id="nextGame"></p>
+					</div>
+				</section>
+				<section id="computersArea" class="col-sm-6 col-md-6">
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th><strong>A</strong></th>
+								<th><strong>B</strong></th>
+								<th><strong>C</strong></th>
+								<th><strong>D</strong></th>
+								<th><strong>E</strong></th>
+								<th><strong>F</strong></th>
+								<th><strong>G</strong></th>
+								<th><strong>H</strong></th>
+								<th><strong>I</strong></th>
+								<th><strong>J</strong></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><strong>1</strong></td>
+								<td><button class="empty" id="100"></button></td>
+								<td><button class="empty" id="101"></button></td>
+								<td><button class="empty" id="102"></button></td>
+								<td><button class="empty" id="103"></button></td>
+								<td><button class="empty" id="104"></button></td>
+								<td><button class="empty" id="105"></button></td>
+								<td><button class="empty" id="106"></button></td>
+								<td><button class="empty" id="107"></button></td>
+								<td><button class="empty" id="108"></button></td>
+								<td><button class="empty" id="109"></button></td>
+							</tr>
+							<tr>
+								<td><strong>2</strong></td>
+								<td><button class="empty" id="110"></button></td>
+								<td><button class="empty" id="111"></button></td>
+								<td><button class="empty" id="112"></button></td>
+								<td><button class="empty" id="113"></button></td>
+								<td><button class="empty" id="114"></button></td>
+								<td><button class="empty" id="115"></button></td>
+								<td><button class="empty" id="116"></button></td>
+								<td><button class="empty" id="117"></button></td>
+								<td><button class="empty" id="118"></button></td>
+								<td><button class="empty" id="119"></button></td>
+							</tr>
+							<tr>
+								<td><strong>3</strong></td>
+								<td><button class="empty" id="120"></button></td>
+								<td><button class="empty" id="121"></button></td>
+								<td><button class="empty" id="122"></button></td>
+								<td><button class="empty" id="123"></button></td>
+								<td><button class="empty" id="124"></button></td>
+								<td><button class="empty" id="125"></button></td>
+								<td><button class="empty" id="126"></button></td>
+								<td><button class="empty" id="127"></button></td>
+								<td><button class="empty" id="128"></button></td>
+								<td><button class="empty" id="129"></button></td>
+							</tr>
+							<tr>
+								<td><strong>4</strong></td>
+								<td><button class="empty" id="130"></button></td>
+								<td><button class="empty" id="131"></button></td>
+								<td><button class="empty" id="132"></button></td>
+								<td><button class="empty" id="133"></button></td>
+								<td><button class="empty" id="134"></button></td>
+								<td><button class="empty" id="135"></button></td>
+								<td><button class="empty" id="136"></button></td>
+								<td><button class="empty" id="137"></button></td>
+								<td><button class="empty" id="138"></button></td>
+								<td><button class="empty" id="139"></button></td>
+							</tr>
+							<tr>
+								<td><strong>5</strong></td>
+								<td><button class="empty" id="140"></button></td>
+								<td><button class="empty" id="141"></button></td>
+								<td><button class="empty" id="142"></button></td>
+								<td><button class="empty" id="143"></button></td>
+								<td><button class="empty" id="144"></button></td>
+								<td><button class="empty" id="145"></button></td>
+								<td><button class="empty" id="146"></button></td>
+								<td><button class="empty" id="147"></button></td>
+								<td><button class="empty" id="148"></button></td>
+								<td><button class="empty" id="149"></button></td>
+							</tr>
+							<tr>
+								<td><strong>6</strong></td>
+								<td><button class="empty" id="150"></button></td>
+								<td><button class="empty" id="151"></button></td>
+								<td><button class="empty" id="152"></button></td>
+								<td><button class="empty" id="153"></button></td>
+								<td><button class="empty" id="154"></button></td>
+								<td><button class="empty" id="155"></button></td>
+								<td><button class="empty" id="156"></button></td>
+								<td><button class="empty" id="157"></button></td>
+								<td><button class="empty" id="158"></button></td>
+								<td><button class="empty" id="159"></button></td>
+							</tr>
+							<tr>
+								<td><strong>7</strong></td>
+								<td><button class="empty" id="160"></button></td>
+								<td><button class="empty" id="161"></button></td>
+								<td><button class="empty" id="162"></button></td>
+								<td><button class="empty" id="163"></button></td>
+								<td><button class="empty" id="164"></button></td>
+								<td><button class="empty" id="165"></button></td>
+								<td><button class="empty" id="166"></button></td>
+								<td><button class="empty" id="167"></button></td>
+								<td><button class="empty" id="168"></button></td>
+								<td><button class="empty" id="169"></button></td>
+							</tr>
+							<tr>
+								<td><strong>8</strong></td>
+								<td><button class="empty" id="170"></button></td>
+								<td><button class="empty" id="171"></button></td>
+								<td><button class="empty" id="172"></button></td>
+								<td><button class="empty" id="173"></button></td>
+								<td><button class="empty" id="174"></button></td>
+								<td><button class="empty" id="175"></button></td>
+								<td><button class="empty" id="176"></button></td>
+								<td><button class="empty" id="177"></button></td>
+								<td><button class="empty" id="178"></button></td>
+								<td><button class="empty" id="179"></button></td>
+							</tr>
+							<tr>
+								<td><strong>9</strong></td>
+								<td><button class="empty" id="180"></button></td>
+								<td><button class="empty" id="181"></button></td>
+								<td><button class="empty" id="182"></button></td>
+								<td><button class="empty" id="183"></button></td>
+								<td><button class="empty" id="184"></button></td>
+								<td><button class="empty" id="185"></button></td>
+								<td><button class="empty" id="186"></button></td>
+								<td><button class="empty" id="187"></button></td>
+								<td><button class="empty" id="188"></button></td>
+								<td><button class="empty" id="189"></button></td>
+							</tr>
+							<tr>
+								<td><strong>10</strong></td>
+								<td><button class="empty" id="190"></button></td>
+								<td><button class="empty" id="191"></button></td>
+								<td><button class="empty" id="192"></button></td>
+								<td><button class="empty" id="193"></button></td>
+								<td><button class="empty" id="194"></button></td>
+								<td><button class="empty" id="195"></button></td>
+								<td><button class="empty" id="196"></button></td>
+								<td><button class="empty" id="197"></button></td>
+								<td><button class="empty" id="198"></button></td>
+								<td><button class="empty" id="199"></button></td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- <div class="next-game" id="playersMessage">
+						Komputer
+					</div> -->
+				</section>
+			</div>
+		</main>
+		<!-- <script type="text/javascript" src="js/script probny.js"></script> -->
+		<!-- <script type="text/javascript" src="js/script probny 2maszty.js"></script> -->
+		<script type="text/javascript" src="js/statki2.js"></script>
+	</body>
+</html>
